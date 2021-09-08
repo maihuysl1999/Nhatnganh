@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "./App.css";
+import useStorage from "./hooks/useStorage"
 
 function App() {
+  const [listStudent, index, next, prev] = useStorage();
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="listStudent">学生一覧：[Huyen, Hoa, Hung, Long]</div>
+      <div className="listStudent">位置：{index + 1}</div>
+      <div className="listStudent">名前：{listStudent[index]}</div>
+      <button onClick={() => { prev() }} className="listStudent">
+        prev
+      </button>
+      <button onClick={() => { next() }}>next</button>
     </div>
   );
 }
